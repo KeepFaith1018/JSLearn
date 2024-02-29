@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun() {
+            console.log("this在函数中的指向", this)
+        }
+        // 1. 直接调用时
+        fun() // window 指向window对象
+        // 2. 在一个对象内调用时
+        const obj = {
+            a: "属性",
+            objfun: fun
+        }
+        obj.objfun() // {a: '属性', objfun: ƒ} 指向对象本身
+        // 3. 通过call/apply调用时
+        // call/apply作用改变this指向
+        fun.call("指定的对象") // String 指向 "指定的对象"
+    </script>
+</body>
+
+</html>

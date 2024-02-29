@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun(a, b, c) {
+            console.log("this指向:", this)
+        }
+        // 直接调用
+        fun(1, 2, 3) // Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+
+        const obj = { name: 'obj' };
+        // call 改变this指向obj
+        fun.call(obj, 1, 2, 3); // {name: 'obj'}name: "obj"[[Prototype]]: Object
+        // apply 改变this指向obj,不同是参数传参不同
+        fun.apply(obj, [1, 2, 3]) // obj
+        // bind 返回一个,this已经指向obj的函数
+        const funs = fun.bind(obj);
+        funs(1, 2, 3); // obj
+    </script>
+</body>
+
+</html>

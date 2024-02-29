@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun() {
+            console.log(this)
+        }
+        fun.apply("str") // String "str"的包装类型
+        fun.apply(null)  // window
+        fun.apply(undefined) // window
+    </script>
+</body>
+
+</html>

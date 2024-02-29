@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 上下文
+        // var color = 'blue';
+        // function fun(argument) {
+        //     if (color == 'blue')
+        //         color = argument;
+        // }
+        // fun('red');
+        // console.log(color) // red
+        var color = 'blue';
+        function changeColor() {
+            let anotherColor = 'red';
+            function swapColor() {
+                let temp = anotherColor;
+                anotherColor = color;
+                color = temp;
+            }
+            swapColor()
+        }
+        changeColor()
+        // 变量声明
+        function add(num1, num2) {
+            var sum = num1 + num2;
+            sums = num1 + num2
+            return sum
+        }
+        // console.log(sums);  报错not found
+        add(1, 2)
+        console.log(sums) // 3
+    </script>
+</body>
+
+</html>

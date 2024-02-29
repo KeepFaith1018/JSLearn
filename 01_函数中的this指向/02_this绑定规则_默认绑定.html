@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun() {
+            console.log("this指向:", this);
+        }
+        // 直接调用
+        fun()
+
+        // 对象中定义,在外面直接调用,仍属于独立调用
+        const obj = {
+            a: "属性",
+            bar: function () {
+                console.log("this指向:", this);
+            }
+        }
+        const funa = obj.bar
+        funa()
+
+        // 函数做参数,仍属于直接调用
+        function test(fn) {
+            fn()
+        }
+        test(obj.bar)
+
+        // 特例,在严格模式下,独立调用的函数中的this指向时undefined
+        "use strict"
+    </script>
+</body>
+
+</html>

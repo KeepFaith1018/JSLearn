@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 动态属性
+        // 1.原始值没有属性,即使不报错
+        let a = 1;
+        a.name = '我是原始值的属性'
+        console.log(a.name); // undifined
+        // 2.只有引用值可以动态添加后面可以使用的属性.
+        const obj = {
+            a: '1'
+        }
+        obj.b = '2';
+        console.log(obj.b) // 2
+
+        // 复制值
+        // 1.原始值是复制的实际值,两个变量独立使用,互不干扰.
+        let c = 1;
+        let d = c;
+        c = 2;
+        console.log(d) // 1
+
+        // 2.引用值是复制的指向对象的指针
+        const obja = { a: '1' };
+        let objb = obja;
+        obja.a = '2';
+        console.log(objb.a) // 2
+
+        // 传递参数
+        // 函数中所有的参数传递都是按值传递
+        // 避免 函数内的本地值影响函数外的值
+        let num = 1;
+        function fun(num) {
+            console.log(num); // 此num只是与函数外的num值一样
+            num += 10;
+            return num;
+        }
+        fun()
+        console.log(num);  // 1   
+
+        // 引用值也是按值传递,但是并不像原始值那么简单
+        let numObj = { num: 1 }
+        function funs(obj) {
+            obj.num = 2;
+        }
+        funs(numObj)
+        console.log(numObj) // {num: 2}
+
+        // 下面修改一下
+        let objc = new Object();
+        function funw(obj) {
+            obj.num = 1;
+            obj = new Object();
+            obj.num = 2;
+        }
+        funw(objc)
+        console.log(objc.num) // 1
+
+        // 分析结果为,引用的参数传递是按值传递的,
+        // 在函数内部obj = new Object();指针指向本地了
+        // 但是obj.a = 1说明是按值引用
+    </script>
+</body>
+
+</html>

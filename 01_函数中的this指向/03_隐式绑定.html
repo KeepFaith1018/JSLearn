@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun() {
+            console.log("this指向:", this);
+        }
+        const obj = {
+            test: fun
+        }
+        // 通过对象调用，在调用时，将obj绑定到this上
+        obj.test();   // 指向对象本身
+    </script>
+</body>
+
+</html>
