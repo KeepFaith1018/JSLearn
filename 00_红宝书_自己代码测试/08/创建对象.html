@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function StudentFactory(name, age, sex) {
+            // let student = {};
+            let student = new Object();
+            student.name = name
+            student.age = age
+            student.sex = sex
+            return student;
+        }
+        let studentA = StudentFactory("学生A", 18, "男");
+        console.log(studentA)
+
+
+        function Student(name, age, sex) {
+            this.name = name
+            this.age = age
+            this.sex = sex
+        }
+        let studentB = new Student("学生B", 18, "女");
+        console.log(studentB)
+
+        function Person() {
+            console.log(1);
+        }
+        console.log(new Person()); // Person空对象
+
+        // 作为构造函数
+        let studentC = new Student("学生C", 18, "女");
+        console.log(studentC.name) // 学生c
+
+        // 作为普通函数,此时this指向Global(Windows)
+        Student("学生D", 18, "女")
+        console.log(this.name) // 学生D
+    </script>
+</body>
+
+</html>

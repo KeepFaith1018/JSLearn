@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型模式创建对象
+        function Person() { };
+        Person.prototype.name = "hello"
+        Person.prototype.sayHello = function () { console.log("hello") }
+
+        let personA = new Person();
+        let personB = new Person();
+        console.log(personA) // personA 是个Person对象,但是里面什么都没有.方法和属性在[[prototype]]里面
+        console.log(personA.sayHello() == personB.sayHello()) // true  说明是共享同一个方法
+
+
+        function Test() {
+            this.name = "a";
+        }
+        // 验证1
+        console.log(Test.prototype) // Object {constructor: f Test()}
+        // 验证2
+        console.log(Test.prototype.constructor == Test) // true
+        let test = new Test();
+        console.log(test.__proto__);
+        // 验证4
+        console.log(test.__proto__ == Test.prototype) // true
+    </script>
+</body>
+
+</html>
