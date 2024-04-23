@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var message = "我是需要被装饰的文字"
+        var add1 = function (message) {
+            return '!' + message + '!';
+        }
+        var add2 = function (message) {
+            return '?' + message + '?';
+        }
+        var newMessage = add1(message);
+        console.log(newMessage); //!我是需要被装饰的文字!\
+
+        function createAdd(code) {
+            function add(message) {
+                return code + message + code;
+            }
+            return add;
+        }
+        var addfun = createAdd("!");
+        var newMessage = addfun(message)
+        console.log(newMessage); // !我是需要被装饰的文字!
+    </script>
+</body>
+
+</html>

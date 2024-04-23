@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sum(a, b) {
+            return a + b;
+        }
+        function pow(x) {
+            return x * x;
+        }
+
+        // 定义一种需求,对两个数先相加在平方.对于这个样类似的操作,通常做法就是定义特定的函数,然后按照顺序去调用.
+        // 组合函数的概念就是把一次执行的函数组合在一起通过一个函数去调用的过程
+        // 伪代码理解为 composeFun(a,b) = pow(sum(a,b))
+        // 对于composeFun可以通过自定义工具函数实现
+
+        function composeFun(...funs) {
+            if (funs.length <= 0) return;
+            for (let i = 0; i < funs.length; i++) {
+                if (typeof funs[i] != "function") {
+                    throw new Error(`index position ${i} must be function`);
+                }
+            }
+            // 返回新函数
+            return function (...args) {
+                // 第一个函数的参数是不确定的先执行出结果
+                var result = funs[0].apply(this, args)
+                // 后面函数的参数一定是前一次函数的返回值是确定的
+                for (let i = 1; i < funs.length; i++) {
+                    result = funs[i].apply(this, [result])
+                }
+                return result;
+            }
+        }
+        var newComposeFun = composeFun(sum, pow);
+        console.log(newComposeFun(1, 2))
+    </script>
+</body>
+
+</html>

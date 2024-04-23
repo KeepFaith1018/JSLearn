@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var suma = 1;
+        var sumb = 2;
+        // 没有闭包
+        // 要实现求a+b的值
+        function sum(a, b) {
+            return a + b;
+        }
+        var sum = sum(a + b)
+        // 有闭包
+        function sum() {
+            return a + b;
+        }
+        var sum = sum();
+
+    </script>
+</body>
+
+</html>

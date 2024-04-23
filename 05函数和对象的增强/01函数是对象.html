@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function foo() { }
+        // 1.函数本身就是对象,可以和其他对象一样添加属性
+        foo.hello = "hello"
+        console.log(foo.hello) // hello
+        // 2.函数内置了一些默认属性
+        /* 
+            name: 函数名
+            length: 函数所需参数的数量
+        */
+        console.dir(foo)
+
+
+    </script>
+</body>
+
+</html>
