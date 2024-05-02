@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age, id) {
+            this.name = name
+            this.age = age
+            this.id = id
+        }
+        var personA = new Person("guo", 18, "2220022")
+        // personA对象是由Person构造函数创建的
+        // personA的隐式原型等于Person的显示原型
+        console.log(personA.__proto__ == Person.prototype) // true
+
+
+        // Person.prototype是显示原型对象,但本质也是对象,只是本事有constroctor指向Person构造函数
+        // 其实这个对象是Object构造函数实例出来的
+        console.log(Person.prototype.__proto__ == Object.prototype) // true
+
+
+        // 不管是Person,还是Object构造函数,是函数,本质还是对象.
+        // 所以也有原型对象,是由Function()实例出来的
+        console.log(Person.__proto__ == Function.prototype); // true
+    </script>
+</body>
+
+</html>

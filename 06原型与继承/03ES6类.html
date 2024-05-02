@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6的类
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            runing() {
+                console.log("I can run")
+            }
+        }
+
+        var personA = new Person("guo", 19)
+        console.log(personA)
+        console.log(personA.__proto__ == Person.prototype) // true
+        console.log(Person.prototype.constructor == Person)// true
+    </script>
+</body>
+
+</html>
